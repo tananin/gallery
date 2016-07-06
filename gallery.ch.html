@@ -1,0 +1,93 @@
+[[-
+Галерея изображений на сайта:
+
+0. Подключаем jcarousel
+1. Устанавливаем MIGX
+2. Создаём новый TV тип: MIGX:
+
+Вкладки формы:
+------------------------------------------------------------------------------------------------------------------------
+[
+{"caption":"Описание", "fields": [
+{"field":"set","caption":"Фотогалерея"},
+{"field":"title","caption":"Альбом"},
+{"field":"description","caption":"Подпись к фотографии"},
+{"field":"image","caption":"Фотография","inputTVtype":"image"}
+]}
+]
+------------------------------------------------------------------------------------------------------------------------
+
+Разметка колонок:
+------------------------------------------------------------------------------------------------------------------------
+[
+{"header": "Фотогалерея", "sortable": "true", "dataIndex": "set"},
+{"header": "Альбом", "sortable": "true", "dataIndex": "title"},
+{"header": "Подпись к фотографии", "sortable": "true", "dataIndex": "description"},
+{"header": "Фотография", "sortable": "false", "dataIndex": "image","renderer": "this.renderImage"}
+]
+------------------------------------------------------------------------------------------------------------------------
+
+
+3. Вызываем галерею (параметр номер альбома):
+[[$gallery?&album=`1`]]
+
+
+Пример шаблона:
+------------------------------------------------------------------------------------------------------------------------
+<li>
+    <a rel="gallery[[+set]]" class="fancybox" href="[[+image]]" title="[[+description]]" [[+link_attributes]]>
+        <img src="[[phpthumbon? &input=`[[+image]]` &options=`w=300&h=160&zc=1`]]" alt="[[+title]]" title="[[+title]]" />
+    </a>
+</li>
+------------------------------------------------------------------------------------------------------------------------
+]]
+
+
+
+<div class="b-photo-block b-photo-block_even">
+    <div class="b-photo-block__title">
+        [[
+        getImageList?
+        &tpl=`@CODE:[[+title]]`
+        &tvname=`galleryphoto`
+        &where=`{"set:=":"[[+album]]"}`
+        &limit=`1`
+        ]]
+
+    </div>
+    <div class="b-photo-block__slider-holder">
+        <script>
+            <!--
+            $(document).ready(function () {
+                $('#group[[+album]]').jcarousel();
+
+                $('#group[[+album]]_prev')
+                        .jcarouselControl({
+                            target: '-=1'
+                        });
+
+                $('#group[[+album]]_next')
+                        .jcarouselControl({
+                            target: '+=1'
+                        });
+            });
+            -->
+        </script>
+        <div class="b-photo-block__slider" id="group[[+album]]" data-jcarousel="true">
+
+            <ul style="left: 0px; top: 0px;">
+                [[
+                getImageList?
+                &tpl=`gallery__tpl`
+                &tvname=`galleryphoto`
+                &where=`{"set:=":"[[+album]]"}`
+                ]]
+            </ul>
+        </div>
+        <div class="b-photo-block__control b-photo-block__control_left" id="group[[+album]]_prev"
+             data-jcarouselcontrol="true"></div>
+        <div class="b-photo-block__control b-photo-block__control_right" id="group[[+album]]_next"
+             data-jcarouselcontrol="true"></div>
+    </div>
+
+</div>

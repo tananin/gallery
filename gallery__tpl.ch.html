@@ -1,0 +1,21 @@
+[[-
+
+[
+{"caption":"Описание", "fields": [
+{"field":"set","caption":"Фотогалерея"},
+{"field":"title","caption":"Альбом"},
+{"field":"description","caption":"Подпись к фотографии"},
+{"field":"image","caption":"Фотография","inputTVtype":"image"}
+]}
+]
+
+
+[[phpthumbon? &input=`[[+image]]` &options=`w=300&h=160&zc=1`]]
+]]
+
+
+<li>
+    <a rel="gallery[[+set]]" class="fancybox" href="[[+image]]" title="[[+description]]" [[+link_attributes]]>
+        <img src="[[phpthumbon? &input=`[[+image]]` &options=`w=300&h=160&zc=1`]]" alt="[[+title]]" title="[[+title]]" />
+    </a>
+</li>
