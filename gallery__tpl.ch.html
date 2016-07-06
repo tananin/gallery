@@ -2,9 +2,10 @@
 
 [
 {"caption":"Описание", "fields": [
-{"field":"set","caption":"Фотогалерея"},
-{"field":"title","caption":"Альбом"},
+{"field":"set","caption":"Слайдер"},
+{"field":"title","caption":"Заголовок"},
 {"field":"description","caption":"Подпись к фотографии"},
+{"field":"link","caption":"Ссылка"},
 {"field":"image","caption":"Фотография","inputTVtype":"image"}
 ]}
 ]
@@ -13,9 +14,12 @@
 [[phpthumbon? &input=`[[+image]]` &options=`w=300&h=160&zc=1`]]
 ]]
 
-
-<li>
-    <a rel="gallery[[+set]]" class="fancybox" href="[[+image]]" title="[[+description]]" [[+link_attributes]]>
-        <img src="[[phpthumbon? &input=`[[+image]]` &options=`w=300&h=160&zc=1`]]" alt="[[+title]]" title="[[+title]]" />
-    </a>
-</li>
+<div id="[[+id]]" class="nivo-html-caption">
+    <div class="nivo-caption-inner">
+        <div class='nivo-caption-title slider-title '>[[+title]]</div>
+        <div class='slider-body nivo-caption-body hidden-phone'>[[+description]]</div>
+        <div class='nivo-caption-link slider-link '>
+            <a class='btn btn-theme btn-large' href="[[~[[+link]]]]">Читать далее</a>
+        </div>
+    </div>
+</div>
