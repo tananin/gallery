@@ -1,0 +1,18 @@
+[[-
+Слайдер для bootstrapa
+]]
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        [[getImageList?
+        &tpl=`gallery-bootstrap--slider__tpl-li`
+        &tvname=`slider`
+        ]]
+    </ol>
+    <div class="carousel-inner">
+        [[getImageList?
+        &tpl=`gallery-bootstrap--slider__tpl-images`
+        &tvname=`slider`
+        ]]
+    </div>
+</div>

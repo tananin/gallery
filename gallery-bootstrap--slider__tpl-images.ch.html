@@ -1,0 +1,17 @@
+[[-
+
+Плэйсхолдеры
+
+[[+fieldname]] — любое поле из конфигурации MIGX или из переданных параметров в сниппет
+[[+idx]] — порядковый номер, начиная с 1
+[[+_first]] — вернет 1, если это первая запись
+[[+_last]] — вернет 1, если это последняя запись
+[[+_alt]] — вернет 1, если это четная запись
+[[+total]] — общее число элементов (можно изменить через &totalVar)
+[[+property.name]] — выведет параметр с именем &name=`` в вызове getImageList. Например, при вызове:
+[[getImageList? &tvname=`slider` &tpl=`@CODE: [[+image]]`]]плейсхолдер [[+property.tvname]] будет иметь значение «slider».
+]]
+
+<div class="item [[+_first:is=`1`:then=`active`]]">
+    <img src="[[+image]]" data-thumb="[[+image]]" alt="[[+description]]" title="[[+description]]"/>
+</div>
